@@ -1,0 +1,32 @@
+header 
+    .container.p-sm-5.p-3
+        img(src="/src/assets/images/logo.svg", alt="logo")
+        .btn-group
+            button.btn.btn-secondary.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+                i.fa.fa-gear.me-2
+                | Units
+                ul.dropdown-menu.dropdown-menu-end
+                    li 
+                        a.dropdown-item.switch(data-to="im") Switch to Imperial
+                    li 
+                        h6.dropdown-header Temperature
+                    li
+                        a.dropdown-item.active.values(href='#' data-value="c" data-type="temp" data-unit="me") Celsius(°C) 
+                    li
+                        a.dropdown-item.values(href='#' data-value="f" data-type="temp" data-unit="im") Fahrenheit(°F)
+                    li 
+                        hr.dropdown-divider
+                    li 
+                        h6.dropdown-header Wind Speed
+                    li
+                        a.dropdown-item.active.values(href='#' data-value="km/h" data-type="speed"  data-unit="me") km/h
+                    li
+                        a.dropdown-item.values(href='#' data-value="mph" data-type="speed" data-unit="im") mph
+                    li 
+                        hr.dropdown-divider
+                    li 
+                        h6.dropdown-header Precipitation
+                    li
+                        a.dropdown-item.active.values(href='#' data-value="mm" data-type="length" data-unit="me") Millimeters(mm)
+                    li
+                        a.dropdown-item.values(href='#' data-value="in" data-type="length" data-unit="im") Inches (in)
