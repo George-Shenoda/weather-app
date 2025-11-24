@@ -1,44 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather-APP</title>
-    <link rel="shortcut icon" href="/favicon-32x32.png" type="image/x-icon">
-  </head>
-  <body> 
-    <header> 
-      <div class="container p-sm-5 p-3"><img src="/src/assets/images/logo.svg" alt="logo">
-        <div class="btn-group">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-gear me-2"></i>Units
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li> <a class="dropdown-item switch" data-to="im">Switch to Imperial</a></li>
-              <li> 
-                <h6 class="dropdown-header">Temperature</h6>
-              </li>
-              <li><a class="dropdown-item active values" href="#" data-value="c" data-type="temp" data-unit="me">Celsius(°C) </a></li>
-              <li><a class="dropdown-item values" href="#" data-value="f" data-type="temp" data-unit="im">Fahrenheit(°F)</a></li>
-              <li> 
-                <hr class="dropdown-divider">
-              </li>
-              <li> 
-                <h6 class="dropdown-header">Wind Speed</h6>
-              </li>
-              <li><a class="dropdown-item active values" href="#" data-value="km/h" data-type="speed" data-unit="me">km/h</a></li>
-              <li><a class="dropdown-item values" href="#" data-value="mph" data-type="speed" data-unit="im">mph</a></li>
-              <li> 
-                <hr class="dropdown-divider">
-              </li>
-              <li> 
-                <h6 class="dropdown-header">Precipitation</h6>
-              </li>
-              <li><a class="dropdown-item active values" href="#" data-value="mm" data-type="length" data-unit="me">Millimeters(mm)</a></li>
-              <li><a class="dropdown-item values" href="#" data-value="in" data-type="length" data-unit="im">Inches (in)</a></li>
-            </ul>
-          </button>
-        </div>
-      </div>
-    </header>
-    <script type="module" src="/src/ts/main.ts"> </script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather-APP</title>
+        <link
+            rel="shortcut icon"
+            href="/favicon-32x32.png"
+            type="image/x-icon"
+        />
+    </head>
+    <body>
+        <header>
+            <div class="container p-sm-5 p-3">
+                <img src="/src/assets/images/logo.svg" alt="logo" />
+                <div class="btn-group">
+                    <button
+                        class="btn btn-secondary dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        <i class="fa fa-gear me-2"></i>Units
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item switch" data-to="im"
+                                    >Switch to Imperial</a
+                                >
+                            </li>
+                            <li>
+                                <h6 class="dropdown-header">Temperature</h6>
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item active values"
+                                    href="#"
+                                    data-value="c"
+                                    data-type="temp"
+                                    data-unit="me"
+                                    >Celsius(°C)
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item values"
+                                    href="#"
+                                    data-value="f"
+                                    data-type="temp"
+                                    data-unit="im"
+                                    >Fahrenheit(°F)</a
+                                >
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <h6 class="dropdown-header">Wind Speed</h6>
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item active values"
+                                    href="#"
+                                    data-value="km/h"
+                                    data-type="speed"
+                                    data-unit="me"
+                                    >km/h</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item values"
+                                    href="#"
+                                    data-value="mph"
+                                    data-type="speed"
+                                    data-unit="im"
+                                    >mph</a
+                                >
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <h6 class="dropdown-header">Precipitation</h6>
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item active values"
+                                    href="#"
+                                    data-value="mm"
+                                    data-type="length"
+                                    data-unit="me"
+                                    >Millimeters(mm)</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    class="dropdown-item values"
+                                    href="#"
+                                    data-value="in"
+                                    data-type="length"
+                                    data-unit="im"
+                                    >Inches (in)</a
+                                >
+                            </li>
+                        </ul>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <script type="module" src="/src/ts/main.ts"></script>
+    </body>
 </html>

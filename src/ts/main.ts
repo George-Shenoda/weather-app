@@ -9,11 +9,11 @@ import "@fortawesome/fontawesome-free/js/all";
 import "./layouts/header";
 
 function cleanData(dirty: string | Node) {
-  return DOMPurify.sanitize(dirty);
+    return DOMPurify.sanitize(dirty);
 }
 
 const s = z.string();
 if (!s.safeParse("3").success) {
-  console.log(fromZodError(s.safeParse("3").error as ZodError));
+    console.log(fromZodError(s.safeParse("3").error as ZodError));
 }
 cleanData("<b>P</b>");

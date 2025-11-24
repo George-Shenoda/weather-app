@@ -1,8 +1,8 @@
 export default {
-  plugins: {
-    autoprefixer: {},
-    "postcss-preset-env": {
-      stage: 1,
+    plugins: {
+        autoprefixer: {},
+        "postcss-preset-env": {
+            stage: 1,
+        },
     },
-  },
 };
