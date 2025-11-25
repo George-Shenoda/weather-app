@@ -27,6 +27,7 @@ export function fetchAPI(url: string) {
                         content.style.display = "flex";
                         location = input.value as keyof Location;
                         updateContext(result.data[location], location);
+                        input.value = "";
                     } else {
                         content.style.display = "none";
                         h2.style.display = "block";
@@ -39,6 +40,7 @@ export function fetchAPI(url: string) {
                             content.style.display = "flex";
                             location = input.value as keyof Location;
                             updateContext(result.data[location], location);
+                            input.value = "";
                         } else {
                             content.style.display = "none";
                             h2.style.display = "block";

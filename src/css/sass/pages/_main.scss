@@ -2,6 +2,8 @@
 @forward "../layouts/body";
 @use "../variables/colors";
 
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
 .content {
     display: flex;
     justify-content: center;
@@ -43,6 +45,37 @@
                     margin-bottom: 0;
                 }
             }
+        }
+        .details {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            .detail {
+                background-color: colors.$el-bg;
+                color: white;
+                border-radius: 15px;
+                text-align: start;
+                width: calc((100% / 4) - 10px);
+                padding: 15px;
+                padding-bottom: 10px;
+                border: 1px solid rgba(187, 187, 187, 0.1);
+                .text {
+                    color: colors.$text-color;
+                }
+                .value {
+                    font-size: 40px;
+                    font-weight: normal;
+                    font-family: "DM Sans", sans-serif;
+                    margin-bottom: 0;
+                }
+            }
+        }
+        h4 {
+            color: white;
+            margin-top: 50px;
+            text-align: start;
+            font-size: 20px;
         }
     }
     .right {
