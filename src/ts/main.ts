@@ -28,14 +28,16 @@ document.body.addEventListener("click", (e) => {
 
 const input = document.querySelector("#location") as HTMLInputElement;
 const options = document.querySelector(".options") as HTMLUListElement;
-const items = document.querySelectorAll("li") as NodeListOf<HTMLLIElement>;
+const items = document.querySelectorAll(".bar li") as NodeListOf<HTMLLIElement>;
+let current: number = -1;
+items.forEach((li) => li.setAttribute("tabindex", "-1"));
 
 input.addEventListener("focus", () => {
     options.style.display = "block";
 });
 
 input.addEventListener("input", () => {
-    const filter = input.value.toLowerCase();
+    const filter = cleanData(input.value).toLowerCase();
 
     items.forEach((li) => {
         const text = li.textContent.toLowerCase();
@@ -44,6 +46,43 @@ input.addEventListener("input", () => {
 
     options.style.display = "block"; // keep visible while typing
 });
+
+input.addEventListener("keydown", (e) => {
+    const visibleItems = Array.from(items).filter(
+        (li) => li.style.display !== "none",
+    );
+    if (!visibleItems.length) return;
+
+    if (e.key === "ArrowDown") {
+        e.preventDefault();
+        current++;
+        if (current >= visibleItems.length) current = 0;
+        highlightItem(visibleItems.indexOf(visibleItems[current]));
+    }
+
+    if (e.key === "ArrowUp") {
+        e.preventDefault();
+        current--;
+        if (current < 0) current = visibleItems.length - 1;
+        highlightItem(visibleItems.indexOf(visibleItems[current]));
+    }
+
+    if (e.key === "Enter") {
+        e.preventDefault();
+        if (current >= 0) {
+            input.value = visibleItems[current].dataset.value!;
+            options.style.display = "none";
+            current = -1;
+        }
+    }
+});
+
+function highlightItem(index: number) {
+    items.forEach((li, i) => {
+        if (i === index) li.classList.add("highlighted");
+        else li.classList.remove("highlighted");
+    });
+}
 
 // Click on option
 options.addEventListener("click", (e) => {

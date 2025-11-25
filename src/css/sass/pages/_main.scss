@@ -1,0 +1,51 @@
+@forward "../layouts/header";
+@forward "../layouts/body";
+@use "../variables/colors";
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    .left {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        .current {
+            text-align: start;
+            background-image: url("/assets/images/bg-today-large.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 310px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            h3 {
+                font-weight: 700;
+                color: white;
+            }
+            p {
+                color: colors.$text-color;
+            }
+            .data {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                img {
+                    width: 100px;
+                    margin-right: 10px;
+                }
+                p {
+                    color: white;
+                    font-size: 100px;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    .right {
+        flex: 1;
+    }
+}

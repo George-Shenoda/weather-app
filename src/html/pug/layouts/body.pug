@@ -10,18 +10,21 @@
                     li(data-value="Italy") Italy
                     li(data-value="London") London
                     li(data-value="San Francisco") San Francisco
-                img(src="/src/assets/images/icon-search.svg", alt="")
+                img(src="assets/images/icon-search.svg", alt="")
             button.btn Search
         h2.no_result No search result found!
         .content
-            include ../components/currentWeather.pug
+            .left 
+                include ../components/currentWeather.pug
+            .right 
+                | s
 
 .body.failed 
     .container.pt-sm-4.pt-2 
-        img.error(src="/src/assets/images/icon-error.svg", alt="")
+        img.error(src="assets/images/icon-error.svg", alt="")
         .text 
             h1 SomeThing went wrong 
             p We couldn't connect to server (API error). Please try again in a few moments 
         button.btn.btn-secondary.retry 
-            img(src="/src/assets/images/icon-retry.svg", alt="")
+            img(src="assets/images/icon-retry.svg", alt="")
             | Retry

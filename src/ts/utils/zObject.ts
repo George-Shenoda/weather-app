@@ -9,11 +9,6 @@ export const data = z
                 temperature_2m: z.number(),
                 weather_code: z.number(),
                 wind_speed_10m: z.number(),
-                is_day: z
-                    .number()
-                    .min(0)
-                    .max(1)
-                    .transform((v) => v === 1),
                 apparent_temperature: z.number(),
                 time: z.string().transform((v) => new Date(v)),
             }),
