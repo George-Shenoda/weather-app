@@ -40,12 +40,23 @@
       </div>
     </header>
     <div class="body success">
-      <div class="container pt-sm-4 pt-2 px-5 px-sm-0">
-        <h1>How's the sky looking today?</h1>
+      <div class="container pt-sm-4 pt-0">
+        <h1 class="px-5 px-sm-0">How's the sky looking today?</h1>
         <div class="search"> 
-          <input id="city" type="text" name="city" placeholder="Search for a place"><img src="/src/assets/images/icon-search.svg" alt="">
+          <div class="bar">
+            <input id="location" type="text" placeholder="Search for a place..." autocomplete="off">
+            <ul class="options">
+              <li data-value="Egypt">Egypt</li>
+              <li data-value="Germany">Germany</li>
+              <li data-value="Italy">Italy</li>
+              <li data-value="London">London</li>
+              <li data-value="San Francisco">San Francisco</li>
+            </ul><img src="/src/assets/images/icon-search.svg" alt="">
+          </div>
           <button class="btn">Search</button>
         </div>
+        <h2 class="no_result">No search result found!</h2>
+        <div class="content"> </div>
       </div>
     </div>
     <div class="body failed"> 
