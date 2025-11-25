@@ -77,6 +77,43 @@
             text-align: start;
             font-size: 20px;
         }
+        .daily {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            .day {
+                background-color: colors.$el-bg;
+                color: white;
+                border-radius: 15px;
+                width: calc((100% / 7) - 10px);
+                padding: 10px;
+                border: 1px solid rgba(187, 187, 187, 0.1);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .dayName {
+                    font-size: 15px;
+                    font-weight: 600;
+                    margin-bottom: 0;
+                }
+                img {
+                    width: 80px;
+                    align-self: center;
+                }
+                .text {
+                    display: flex;
+                    justify-content: space-between;
+                    p {
+                        margin-bottom: 0;
+                    }
+                    .min {
+                        color: colors.$text-color;
+                    }
+                }
+            }
+        }
     }
     .right {
         flex: 1;

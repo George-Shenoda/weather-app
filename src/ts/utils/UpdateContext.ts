@@ -30,11 +30,41 @@ export function updateContext(result: Data, city: string) {
         ".length .value",
     ) as HTMLParagraphElement;
 
-    like.innerText = `${result.current.apparent_temperature}°`;
+    like.innerText = `${Math.floor(result.current.apparent_temperature)}°`;
     humidity.innerText = `${result.current.relative_humidity_2m}%`;
     if (urlParams.units.speed === "kmh")
         speed.innerText = `${result.current.wind_speed_10m} km/h`;
     else
         speed.innerText = `${result.current.wind_speed_10m} ${urlParams.units.speed}`;
     length.innerText = `${result.current.precipitation} ${urlParams.units.length}`;
+
+    const daily = document.querySelector(".daily") as HTMLDivElement;
+    const dayName = daily.querySelectorAll(
+        ".dayName",
+    ) as NodeListOf<HTMLParagraphElement>;
+    const imgs = daily.querySelectorAll("img") as NodeListOf<HTMLImageElement>;
+    const maxi = daily.querySelectorAll(
+        ".max",
+    ) as NodeListOf<HTMLParagraphElement>;
+    const mins = daily.querySelectorAll(
+        ".min",
+    ) as NodeListOf<HTMLParagraphElement>;
+
+    dayName.forEach((day, index) => {
+        day.innerText = result.daily.time[index].toLocaleDateString("en-US", {
+            weekday: "short",
+        });
+    });
+
+    imgs.forEach((img, index) => {
+        img.src = weatherImages[result.daily.weather_code[index]];
+    });
+
+    maxi.forEach((max, index) => {
+        max.innerText = `${Math.floor(result.daily.temperature_2m_max[index])}°`;
+    });
+
+    mins.forEach((min, index) => {
+        min.innerText = `${Math.floor(result.daily.temperature_2m_min[index])}°`;
+    });
 }
