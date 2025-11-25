@@ -1,0 +1,43 @@
+@use "../variables/colors";
+.body {
+    .container {
+        text-align: center;
+        h1 {
+            color: white;
+            font-size: 45px;
+            font-weight: 700;
+        }
+    }
+    &.failed {
+        display: none;
+        .container {
+            margin-top: 60px;
+            .error {
+                width: 40px;
+            }
+            .text {
+                max-width: 600px;
+                margin: 0 auto;
+                p {
+                    margin-top: -10px;
+                    padding: 0 75px;
+                    color: colors.$text-color;
+                    font-size: 17px;
+                    line-height: 1.5;
+                }
+            }
+            button {
+                background-color: colors.$el-bg;
+                border: none;
+                color: white;
+                display: flex;
+                justify-content: center;
+                margin: 0 auto;
+                align-items: center;
+                img {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

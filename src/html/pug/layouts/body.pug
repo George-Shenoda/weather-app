@@ -1,0 +1,17 @@
+.body.success
+    .container.pt-sm-4.pt-2.px-5.px-sm-0
+        h1 How's the sky looking today?
+        .search 
+            input#city(type="text", name="city", placeholder="Search for a place")
+            img(src="/src/assets/images/icon-search.svg", alt="")
+            button.btn Search
+
+.body.failed 
+    .container.pt-sm-4.pt-2 
+        img.error(src="/src/assets/images/icon-error.svg", alt="")
+        .text 
+            h1 SomeThing went wrong 
+            p We couldn't connect to server (API error). Please try again in a few moments 
+        button.btn.btn-secondary.retry 
+            img(src="/src/assets/images/icon-retry.svg", alt="")
+            | Retry

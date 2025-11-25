@@ -4,13 +4,13 @@ const unitValue: {
     me: Units;
 } = {
     im: {
-        temp: "f",
+        temp: "fahrenheit",
         speed: "mph",
-        length: "in",
+        length: "inch",
     },
     me: {
-        temp: "c",
-        speed: "km/h",
+        temp: "celsius",
+        speed: "kmh",
         length: "mm",
     },
 };

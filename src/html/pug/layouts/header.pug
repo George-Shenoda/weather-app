@@ -1,5 +1,5 @@
 header 
-    .container.p-sm-5.p-3
+    .container.pt-sm-5.pt-3
         img(src="/src/assets/images/logo.svg", alt="logo")
         .btn-group
             button.btn.btn-secondary.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
@@ -11,15 +11,15 @@ header
                     li 
                         h6.dropdown-header Temperature
                     li
-                        a.dropdown-item.active.values(href='#' data-value="c" data-type="temp" data-unit="me") Celsius(°C) 
+                        a.dropdown-item.active.values(href='#' data-value="celsius" data-type="temp" data-unit="me") Celsius(°C) 
                     li
-                        a.dropdown-item.values(href='#' data-value="f" data-type="temp" data-unit="im") Fahrenheit(°F)
+                        a.dropdown-item.values(href='#' data-value="fahrenheit" data-type="temp" data-unit="im") Fahrenheit(°F)
                     li 
                         hr.dropdown-divider
                     li 
                         h6.dropdown-header Wind Speed
                     li
-                        a.dropdown-item.active.values(href='#' data-value="km/h" data-type="speed"  data-unit="me") km/h
+                        a.dropdown-item.active.values(href='#' data-value="kmh" data-type="speed"  data-unit="me") km/h
                     li
                         a.dropdown-item.values(href='#' data-value="mph" data-type="speed" data-unit="im") mph
                     li 
@@ -29,4 +29,4 @@ header
                     li
                         a.dropdown-item.active.values(href='#' data-value="mm" data-type="length" data-unit="me") Millimeters(mm)
                     li
-                        a.dropdown-item.values(href='#' data-value="in" data-type="length" data-unit="im") Inches (in)
+                        a.dropdown-item.values(href='#' data-value="inch" data-type="length" data-unit="im") Inches (in)

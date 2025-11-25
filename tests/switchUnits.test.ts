@@ -29,9 +29,9 @@ describe("Switch Units", () => {
             document.querySelector("[data-unit='me']")?.classList,
         ).not.toContain("active");
         expect(units).toStrictEqual({
-            temp: "f",
+            temp: "fahrenheit",
             speed: "mph",
-            length: "in",
+            length: "inch",
         });
     });
 
@@ -58,8 +58,8 @@ describe("Switch Units", () => {
             document.querySelector("[data-unit='im']")?.classList,
         ).not.toContain("active");
         expect(units).toStrictEqual({
-            temp: "c",
-            speed: "km/h",
+            temp: "celsius",
+            speed: "kmh",
             length: "mm",
         });
     });
@@ -74,31 +74,31 @@ describe("Switch unit", () => {
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item switch" data-to="im">Switch to Imperial</a></li>
                 <li><h6 class="dropdown-header">Temperature</h6></li>
-                <li><a class="dropdown-item active values" data-type="temp" data-value="c">Celsius (°C)</a></li>
-                <li><a class="dropdown-item values" data-type="temp" data-value="f">Fahrenheit (°F)</a></li>
+                <li><a class="dropdown-item active values" data-type="temp" data-value="celsius">Celsius (°C)</a></li>
+                <li><a class="dropdown-item values" data-type="temp" data-value="fahrenheit">Fahrenheit (°F)</a></li>
             </ul>
         `;
         const unit = document.querySelector(
-            "[data-value='f']",
+            "[data-value='fahrenheit']",
         ) as HTMLLinkElement;
         const [type, value] = switchUnit(unit);
         expect(type).toBe("temp");
-        expect(value).toBe("f");
+        expect(value).toBe("fahrenheit");
     });
     it("Should Return temp, c", () => {
         document.body.innerHTML = `
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item switch" data-to="im">Switch to Imperial</a></li>
                 <li><h6 class="dropdown-header">Temperature</h6></li>
-                <li><a class="dropdown-item active values" data-type="temp" data-value="c">Celsius (°C)</a></li>
-                <li><a class="dropdown-item values" data-type="temp" data-value="f">Fahrenheit (°F)</a></li>
+                <li><a class="dropdown-item active values" data-type="temp" data-value="celsius">Celsius (°C)</a></li>
+                <li><a class="dropdown-item values" data-type="temp" data-value="fahrenheit">Fahrenheit (°F)</a></li>
             </ul>
         `;
         const unit = document.querySelector(
-            "[data-value='c']",
+            "[data-value='celsius']",
         ) as HTMLLinkElement;
         const [type, value] = switchUnit(unit);
         expect(type).toBe("temp");
-        expect(value).toBe("c");
+        expect(value).toBe("celsius");
     });
 });
