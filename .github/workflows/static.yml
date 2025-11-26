@@ -1,48 +1,47 @@
-# Source - https://stackoverflow.com/a
-# Posted by Zak
-# Retrieved 2025-11-26, License - CC BY-SA 4.0
+name: Deploy static content to Pages
 
- name: pnpm Example Workflow
 on:
-  push: 
-  branches: [ master]
+  push:
+    branches: ['main']
+  workflow_dispatch:
 
- permissions:
-   contents: read
-   pages: write
-   id-token: write
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
- jobs:
-   build:
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
     environment:
-    name: github-pages
-  url: ${{steps.deployment.outputs.page_url}}
-runs-on: ubuntu-latest
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
 
-strategy:
-  matrix:
-    node-version: [18]
-steps:
-  - uses: actions/checkout@v3
-  - uses: pnpm/action-setup@v2
-    with:
-      version: 7
-  - name: Use Node.js ${{ matrix.node-version }}
-    uses: actions/setup-node@v3
-    with:
-      node-version: ${{ matrix.node-version }}
-      cache: pnpm
-  - name: Install dependencies
-    run: pnpm install
-  - name: Build
-    run: pnpm run build
-  - name: Setup Pages
-    uses: actions/configure-pages@v3
-  - name: Upload artifact
-    uses: actions/upload-pages-artifact@v1
-    with:
-      # Upload dist repository
-       path: ./dist
-  - name: Deploy to GitHub Pages
-    id: deployment
-    uses: actions/deploy-pages@v1
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build
+        run: pnpm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload dist repository
+           path: ./dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
