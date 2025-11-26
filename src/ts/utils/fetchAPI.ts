@@ -11,6 +11,7 @@ export function fetchAPI(url: string) {
     const successBody = document.querySelector(".success") as HTMLDivElement;
     const h2 = document.querySelector(".no_result") as HTMLElement;
     const content = document.querySelector(".content") as HTMLDivElement;
+    const p = document.querySelector(".labels p") as HTMLParagraphElement;
     fetch(url)
         .then((response) => response.json())
         .then((reading) => {
@@ -28,6 +29,11 @@ export function fetchAPI(url: string) {
                         location = input.value.trim() as keyof Location;
                         updateContext(result.data[location], location);
                         input.value = "";
+                        p.innerText = result.data[
+                            location
+                        ].current.time.toLocaleDateString("en-US", {
+                            weekday: "long",
+                        });
                         updateDay(result.data[location]);
                     } else if (input.value === "") {
                         h2.style.display = "none";
@@ -45,6 +51,11 @@ export function fetchAPI(url: string) {
                             location = input.value as keyof Location;
                             updateContext(result.data[location], location);
                             input.value = "";
+                            p.innerText = result.data[
+                                location
+                            ].current.time.toLocaleDateString("en-US", {
+                                weekday: "long",
+                            });
                             updateDay(result.data[location]);
                         } else {
                             content.style.display = "none";
