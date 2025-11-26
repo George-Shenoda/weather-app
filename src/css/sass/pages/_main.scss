@@ -1,3 +1,4 @@
+@forward "../components/dropdown";
 @forward "../layouts/header";
 @forward "../layouts/body";
 @use "../variables/colors";
@@ -9,6 +10,8 @@
     justify-content: center;
     align-items: center;
     margin-top: 40px;
+    margin-bottom: 40px;
+    gap: 20px;
     .left {
         flex: 2;
         display: flex;
@@ -17,8 +20,9 @@
             text-align: start;
             background-image: url("/assets/images/bg-today-large.svg");
             background-repeat: no-repeat;
-            background-size: contain;
-            height: 310px;
+            background-size: cover;
+            height: 286px;
+            border-radius: 20px;
             position: relative;
             display: flex;
             justify-content: space-between;
@@ -52,6 +56,7 @@
             justify-content: space-between;
             margin-top: 20px;
             .detail {
+                flex-shrink: 0;
                 background-color: colors.$el-bg;
                 color: white;
                 border-radius: 15px;
@@ -64,7 +69,7 @@
                     color: colors.$text-color;
                 }
                 .value {
-                    font-size: 40px;
+                    font-size: 30px;
                     font-weight: normal;
                     font-family: "DM Sans", sans-serif;
                     margin-bottom: 0;
@@ -82,8 +87,8 @@
             align-items: center;
             justify-content: space-between;
             margin-top: 20px;
-            margin-bottom: 40px;
             .day {
+                flex-shrink: 0;
                 background-color: colors.$el-bg;
                 color: white;
                 border-radius: 15px;
@@ -117,5 +122,111 @@
     }
     .right {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        background-color: colors.$el-bg;
+        border-radius: 20px;
+        border: 1px solid rgba(187, 187, 187, 0.1);
+        padding: 15px;
+        padding-top: 20px;
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            h3 {
+                color: white;
+                font-size: 20px;
+                margin: 0;
+            }
+            button {
+                background-color: hsl(243, 23%, 30%);
+                p {
+                    margin: 0;
+                    display: inline;
+                }
+            }
+        }
+        .list {
+            flex: 1 1 auto; // take remaining vertical space
+            overflow-y: auto; // enable vertical scroll when needed
+            -webkit-overflow-scrolling: touch;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding-right: 6px;
+            max-height: calc(100vh - 88px - 54px - 47px - 170px);
+            .hour {
+                background: colors.$el-sel;
+                border-radius: 10px;
+                padding: 10px;
+                color: white;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border: 1px solid rgba(187, 187, 187, 0.1);
+                .together {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    img {
+                        width: 40px;
+                    }
+                    .time {
+                        margin: 0;
+                        font-size: 20px;
+                    }
+                }
+                .temp {
+                    margin: 0;
+                    font-size: 18px;
+                }
+            }
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.08);
+                border-radius: 8px;
+            }
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .content {
+        flex-direction: column;
+        .left {
+            flex: 1;
+            .details {
+                flex-wrap: wrap;
+                .detail {
+                    width: calc((100% / 2) - 10px);
+                    margin-top: 10px;
+                }
+            }
+            .daily {
+                flex-wrap: wrap;
+                .day {
+                    width: calc((100% / 3) - 10px);
+                    margin-top: 10px;
+                }
+            }
+        }
+        .right {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 547px) {
+    .current {
+        flex-direction: column;
+        align-items: center;
+        text-align: center !important;
     }
 }

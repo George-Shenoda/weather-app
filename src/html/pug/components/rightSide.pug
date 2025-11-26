@@ -1,0 +1,28 @@
+.rightContent
+    .labels 
+        h3 Hourly forecast
+        .btn-group
+            button.btn.btn-secondary.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false' data-done="0")
+                p we
+                ul.dropdown-menu.dropdown-menu-end
+                    li 
+                        a.dropdown-item.values(href='#' data-value="1" data-today='6') Monday
+                    li 
+                        a.dropdown-item.values(href='#' data-value="2" data-today='0') Tuesday
+                    li 
+                        a.dropdown-item.values(href='#' data-value="3" data-today='1') Wednesday
+                    li 
+                        a.dropdown-item.values(href='#' data-value="4" data-today='2') Thursday
+                    li 
+                        a.dropdown-item.values(href='#' data-value="5" data-today='3') Friday
+                    li 
+                        a.dropdown-item.values(href='#' data-value="6" data-today='4') Saturday
+                    li 
+                        a.dropdown-item.values(href='#' data-value="7" data-today='5') Sunday
+    .list
+        - for (var i = 0; i < 24; i++)
+            .hour 
+                .together
+                    img(src="assets/images/icon-rain.webp", alt="")
+                    p.time #{i} PM
+                p.temp 20°

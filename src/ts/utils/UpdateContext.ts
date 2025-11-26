@@ -67,4 +67,58 @@ export function updateContext(result: Data, city: string) {
     mins.forEach((min, index) => {
         min.innerText = `${Math.floor(result.daily.temperature_2m_min[index])}°`;
     });
+
+    const today = document.querySelector(
+        ".rightContent button",
+    ) as HTMLButtonElement;
+    const p = today.querySelector("p") as HTMLParagraphElement;
+    const lis = today.querySelectorAll("li a") as NodeListOf<HTMLLinkElement>;
+    lis.forEach((li) => {
+        let value =
+            result.daily.time[0].getDay() -
+            parseInt(li.dataset.value as string);
+        if (value > 0) {
+            value = 7 - value;
+        } else {
+            value = Math.abs(value);
+        }
+        li.dataset.today = `${value}`;
+        if (today.dataset.done === "0") {
+            if (li.dataset.today === "0") {
+                p.innerText = li.innerText;
+                console.log("default");
+                updateDay(result);
+                today.dataset.done = "1";
+            }
+        }
+        li.addEventListener("click", (ev) => {
+            ev.preventDefault(); // stop navigation / fragment change
+            ev.stopPropagation();
+            p.innerText = li.innerText;
+            updateDay(result, parseInt(li.dataset.today as string));
+        });
+    });
+}
+
+function updateDay(result: Data, day: number = 0) {
+    const code = document.querySelectorAll(
+        ".rightContent  img",
+    ) as NodeListOf<HTMLImageElement>;
+    const hours = document.querySelectorAll(
+        ".rightContent  .time",
+    ) as NodeListOf<HTMLParagraphElement>;
+    const temps = document.querySelectorAll(
+        ".rightContent  .temp",
+    ) as NodeListOf<HTMLParagraphElement>;
+
+    for (let i = 0; i < 24; i++) {
+        const idx = day * 24 + i;
+        const rawHour = result.hourly.time[idx].getHours(); // 0..23
+        const hour = rawHour % 12 || 12; // convert 0→12, 13→1, ...
+        const ampm = rawHour >= 12 ? "PM" : "AM";
+        hours[i].innerText = `${hour} ${ampm}`;
+        code[i].src = weatherImages[result.hourly.weather_code[i * (day + 1)]];
+        temps[i].innerText =
+            `${Math.floor(result.hourly.temperature_2m[i * (day + 1)])}°`;
+    }
 }
