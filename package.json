@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "dev": "pug ./src/html/*.pug -o ./ -P -w & vite",
-        "build": "pug ./src/html/*.pug -o ./ tsc && vite build",
+        "build": "pug ./src/html/*.pug -o ./ && tsc && vite build",
         "preview": "vite preview",
         "test": "vitest --environment jsdom",
         "prepare": "husky install",
