@@ -1,4 +1,4 @@
-# example netlify.toml
+# Netlify configuration for Weather App
 [build]
   command = "pnpm run build"
   functions = "netlify/functions"
