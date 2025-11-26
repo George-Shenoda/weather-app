@@ -1,30 +1,36 @@
 .current 
+    .spans 
+        .loading
+            span
+            span
+            span
+        h4 Loading...
     .info 
-        h3 Berlin, Germany
-        p.time Tuesday, Aug 5, 2025
+        h3 
+        p.time 
     .data 
         img(src="assets/images/icon-sunny.webp", alt="alt")
-        p.temp #[i 20°]
+        p.temp #[i ]
 .details 
     .like.detail
         p.text Feels Like
-        p.value 18°
+        p.value -
     .humidity.detail
         p.text Humidity
-        p.value 18%
+        p.value -
     .speed.detail
         p.text Wind
-        p.value 18 km/h
+        p.value -
     .length.detail
         p.text Precipitation
-        p.value 0 mm
+        p.value -
 
-h4 Daily Forecast
+h4.forecast Daily Forecast
 .daily
     - for (var $i = 0; $i < 7; $i++)
         .day
-            p.dayName Tue 
-            img(src="assets/images/icon-sunny.webp", alt="alt")
+            p.dayName 
+            img(src="assets/images/icon-loading.svg", alt="alt")
             .text 
-                p.max 68°
-                p.min 57°
+                p.max 
+                p.min 

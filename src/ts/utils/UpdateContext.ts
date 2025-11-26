@@ -3,11 +3,15 @@ import { urlParams } from "./url";
 
 export function updateContext(result: Data, city: string) {
     const current = document.querySelector(".current") as HTMLDivElement;
+    const info = current.querySelector(".info") as HTMLDivElement;
+    const data = current.querySelector(".data") as HTMLDivElement;
+    const spans = current.querySelector(".spans") as HTMLDivElement;
     const location = current.querySelector("h3") as HTMLHeadingElement;
     const time = current.querySelector(".time") as HTMLParagraphElement;
     const code = current.querySelector("img") as HTMLImageElement;
     const temp = current.querySelector(".temp i") as HTMLParagraphElement;
 
+    current.style.backgroundImage = `url("assets/images/bg-today-large.svg")`;
     location.innerText = city;
     time.innerText = `${result.current.time.toLocaleDateString("en-US", {
         weekday: "long",
@@ -58,6 +62,7 @@ export function updateContext(result: Data, city: string) {
 
     imgs.forEach((img, index) => {
         img.src = weatherImages[result.daily.weather_code[index]];
+        img.style.animation = "none";
     });
 
     maxi.forEach((max, index) => {
@@ -86,7 +91,6 @@ export function updateContext(result: Data, city: string) {
         if (today.dataset.done === "0") {
             if (li.dataset.today === "0") {
                 p.innerText = li.innerText;
-                console.log("default");
                 updateDay(result);
                 today.dataset.done = "1";
             }
@@ -98,6 +102,9 @@ export function updateContext(result: Data, city: string) {
             updateDay(result, parseInt(li.dataset.today as string));
         });
     });
+    spans.style.display = "none";
+    info.style.display = "block";
+    data.style.display = "flex";
 }
 
 function updateDay(result: Data, day: number = 0) {
