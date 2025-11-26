@@ -1,15 +1,26 @@
-# example netlify.toml
+# Netlify configuration for Weather App
 [build]
   command = "pnpm run build"
   functions = "netlify/functions"
   publish = "dist"
 
-  ## Uncomment to use this redirect for Single Page Applications like create-react-app.
-  ## Not needed for static site generators.
-  #[[redirects]]
-  #  from = "/*"
-  #  to = "/index.html"
-  #  status = 200
+# Redirect root to /weather-app/
+[[redirects]]
+  from = "/"
+  to = "/weather-app/"
+  status = 301
+
+# Serve files from /weather-app/* path (maps to dist/* files)
+[[redirects]]
+  from = "/weather-app/*"
+  to = "/:splat"
+  status = 200
+
+# Fallback for SPA routing - serve index.html for unmatched routes under /weather-app/
+[[redirects]]
+  from = "/weather-app/*"
+  to = "/index.html"
+  status = 200
 
   ## (optional) Settings for Netlify Dev
   ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
