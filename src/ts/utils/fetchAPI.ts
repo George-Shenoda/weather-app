@@ -1,4 +1,4 @@
-import { updateContext } from "./UpdateContext";
+import { updateContext, updateDay } from "./UpdateContext";
 import { data } from "./zObject";
 import { fromZodError } from "zod-validation-error";
 import { city, Location } from "../interfaces/interfaces";
@@ -25,9 +25,13 @@ export function fetchAPI(url: string) {
                     if (input.value in result.data) {
                         h2.style.display = "none";
                         content.style.display = "flex";
-                        location = input.value as keyof Location;
+                        location = input.value.trim() as keyof Location;
                         updateContext(result.data[location], location);
                         input.value = "";
+                        updateDay(result.data[location]);
+                    } else if (input.value === "") {
+                        h2.style.display = "none";
+                        content.style.display = "flex";
                     } else {
                         content.style.display = "none";
                         h2.style.display = "block";
@@ -41,6 +45,7 @@ export function fetchAPI(url: string) {
                             location = input.value as keyof Location;
                             updateContext(result.data[location], location);
                             input.value = "";
+                            updateDay(result.data[location]);
                         } else {
                             content.style.display = "none";
                             h2.style.display = "block";

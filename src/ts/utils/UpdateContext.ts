@@ -95,9 +95,7 @@ export function updateContext(result: Data, city: string) {
                 today.dataset.done = "1";
             }
         }
-        li.addEventListener("click", (ev) => {
-            ev.preventDefault(); // stop navigation / fragment change
-            ev.stopPropagation();
+        li.addEventListener("click", () => {
             p.innerText = li.innerText;
             updateDay(result, parseInt(li.dataset.today as string));
         });
@@ -107,7 +105,7 @@ export function updateContext(result: Data, city: string) {
     data.style.display = "flex";
 }
 
-function updateDay(result: Data, day: number = 0) {
+export function updateDay(result: Data, day: number = 0) {
     const code = document.querySelectorAll(
         ".rightContent  img",
     ) as NodeListOf<HTMLImageElement>;
